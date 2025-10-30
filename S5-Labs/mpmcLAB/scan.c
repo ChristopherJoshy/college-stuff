@@ -15,21 +15,21 @@ int main() {
 
     int index;
     for(index=0;index<=n;index++) if(a[index]>=head) break;
-
     printf("SCAN Disk Scheduling\n");
-    // Move towards higher end
-    for(int i=index;i<n+1;i++){
-        distance = a[i]- (i==index ? head : a[i-1]);
-        printf("Move from %d to %d : %d\n", i==index? head:a[i-1], a[i], distance);
+    
+    for (int i = index; i <= n; i++) {
+        int prev = (i == index) ? head : a[i - 1];
+        distance = abs(a[i] - prev);
+        printf("Move from %d to %d : %d\n", prev, a[i], distance);
         seektime += distance;
     }
-    // Move towards start
-    for(int i=index-1;i>=0;i--){
-        distance = a[i+1]-a[i];
-        printf("Move from %d to %d : %d\n", a[i+1], a[i], distance);
+
+    for (int i = index - 1; i >= 0; i--) {
+        distance = abs(a[i + 1] - a[i]);
+        printf("Move from %d to %d : %d\n", a[i + 1], a[i], distance);
         seektime += distance;
     }
-    printf("Total Seek Time: %d\n",seektime);
+
+    printf("Total Seek Time: %d\n", seektime);
     return 0;
 }
-

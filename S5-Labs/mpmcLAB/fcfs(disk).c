@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 int main() {
     int head, a[20], n, distance, seektime=0;
     printf("Enter head position: ");
@@ -11,7 +12,7 @@ int main() {
 
     printf("FCFS Disk Scheduling\n");
     for(int i=0;i<n;i++){
-        distance = (a[i]>a[i+1]) ? a[i]-a[i+1] : a[i+1]-a[i];
+    distance = abs(a[i] - a[i+1]);
         printf("Move from %d to %d : %d\n",a[i],a[i+1],distance);
         seektime += distance;
     }
